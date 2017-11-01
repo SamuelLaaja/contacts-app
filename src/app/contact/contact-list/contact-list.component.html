@@ -1,6 +1,5 @@
 
-<mat-nav-list>
-  <ca-contact-list-item *ngFor="let contact of contacts" [contact]="contact">
-    <!--{{contact.firstName}} {{contact.lastName}}-->
+<mat-nav-list (userSelected)="onSelectContact($event)">
+  <ca-contact-list-item *ngFor="let contact of contacts" [contact]="contact" >
   </ca-contact-list-item>
 </mat-nav-list>

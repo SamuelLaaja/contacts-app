@@ -10,6 +10,7 @@ import {ContactService} from '../services/contact.service';
 export class ContactListComponent implements OnInit {
   contacts: Contact[];
   contact: Contact;
+  selectedContact: Contact;
 
   constructor(private contactService: ContactService) {
   }
@@ -18,4 +19,12 @@ export class ContactListComponent implements OnInit {
     this.contacts = this.contactService.findContacts();
   }
 
+
+  onSelectContact(contact: Contact) {
+    this.selectedContact = contact;
+  }
+
+  onDeleteContact(id: number) {
+    this.contactService.deleteContact(id);
+  }
 }

@@ -1,9 +1,35 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
-@import "https://fonts.googleapis.com/icon?family=Material+Icons";
+
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: normal;
+  src: url('../src/assets/material-icons.woff2');
+}
+
+.material-icons {
+  font-family: 'Material Icons';
+  font-size: 24px;
+}
+
 /* Rules for sizing the icon. */
-.material-icons.md-18 { font-size: 18px; }
-.material-icons.md-24 { font-size: 24px; }
-.material-icons.md-36 { font-size: 36px; }
-.material-icons.md-48 { font-size: 48px; }
-.material-icons.orange600 { color: #FB8C00; }
+.material-icons.md-18 {
+  font-size: 18px;
+}
+
+.material-icons.md-24 {
+  font-size: 24px;
+}
+
+.material-icons.md-36 {
+  font-size: 36px;
+}
+
+.material-icons.md-48 {
+  font-size: 48px;
+}
+
+.material-icons.orange600 {
+  color: #FB8C00;
+}
