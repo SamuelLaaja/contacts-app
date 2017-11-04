@@ -1,5 +1,6 @@
 
-<mat-nav-list (userSelected)="onSelectContact($event)">
-  <ca-contact-list-item *ngFor="let contact of contacts" [contact]="contact" >
+<mat-nav-list>
+  <ca-contact-list-item *ngFor="let contact of contacts" [contact]="contact"
+                        (contactSelected)='onSelectContact($event)' (contactDelete)='onDeleteContact($event)'>
   </ca-contact-list-item>
 </mat-nav-list>
