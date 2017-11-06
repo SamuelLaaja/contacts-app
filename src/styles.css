@@ -8,6 +8,14 @@
   src: url('../src/assets/material-icons.woff2');
 }
 
+html, body, ca-root, material-app, .ca-container {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  background-color: lightgrey;
+}
+
+
 .material-icons {
   font-family: 'Material Icons';
   font-size: 24px;
@@ -31,5 +39,5 @@
 }
 
 .material-icons.orange600 {
-  color: #FB8C00;
+  color: #EB4C00;
 }

@@ -1,0 +1,22 @@
+/*!important post attribute is for overriding value*/
+.ca-sidenav {
+  background-color: thistle;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 20px;
+  display: flex;
+  height: 100%;
+  width: 30%;
+  min-width: 180px;
+  margin: 0;
+}
+
+.ca-toolbar {
+  height: 50px;
+  width: 100%;
+  margin: 0;
+  padding: 8px;
+  color: whitesmoke;
+  background-color: rebeccapurple;
+}
+

@@ -1,2 +1,16 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<ca-contact-list></ca-contact-list>
+
+<mat-toolbar class="ca-toolbar" (click)="sidenav.toggle()">
+  <mat-icon class="material-icons orange600" >menu</mat-icon>
+  Contact app
+</mat-toolbar>
+
+
+<mat-sidenav-container class="ca-container" >
+
+  <mat-sidenav fxLayoutAlign="center top" class="ca-sidenav" mode="push" opened="false" #sidenav >
+    SideBar
+  </mat-sidenav>
+
+  <router-outlet></router-outlet>
+</mat-sidenav-container>
+
