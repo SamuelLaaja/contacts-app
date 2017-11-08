@@ -8,7 +8,7 @@
   src: url('../src/assets/material-icons.woff2');
 }
 
-html, body, ca-root, material-app, .ca-container {
+html, body, ca-root, .ca-container {
   height: 100%;
   width: 100%;
   margin: 0;
@@ -40,4 +40,29 @@ html, body, ca-root, material-app, .ca-container {
 
 .material-icons.orange600 {
   color: #EB4C00;
+}
+
+
+.ca-primary {
+  color: rgb(103, 58, 183)!important;
+}
+
+.ca-accent{
+  color:rgb(255,215,64)!important;
+}
+
+.ca-warn{
+  color:rgb(244,67,54)!important;
+}
+
+.ca-primary-bg {
+  background-color: rgb(103, 58, 183)!important;
+}
+
+.ca-accent-bg {
+  background-color:rgb(255,215,64)!important;
+}
+
+.ca-warn-bg {
+  background-color:rgb(244,67,54)!important;
 }

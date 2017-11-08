@@ -9,16 +9,19 @@ export class ContactService {
 
   constructor() {
     this.localStorageKey = 'contactStorage';
-    this.contacts = [];
+    this.initializeKey();
+    this.contacts = this.readKey();
+  }
+
+  defaultContacts() {
     this.saveContact('Yrjänä', 'Ykkönen', '3045857123', 'Keijokatu 1 as 1', 'Kaupunkila');
     this.saveContact('Kaaleppi', 'Kakkonen', '4045857125', 'Keijokatu 1 as 2', 'Kaupunkila');
     this.saveContact('Kontio', 'Kolmonen', '5045857125', 'Keijokatu 1 as 3', 'Kaupunkila');
-    this.initializeKey();
   }
 
   initializeKey() {
     if (!localStorage.getItem(this.localStorageKey)) {
-      localStorage.setItem(this.localStorageKey, JSON.stringify(this.contacts));
+      localStorage.setItem(this.localStorageKey, JSON.stringify([]));
     }
   }
 
@@ -50,6 +53,16 @@ export class ContactService {
     this.contacts.push(contact);
     this.writeKey(this.contacts);
     return contact.id;
+  }
+
+  editContact (contact: Contact) {
+    this.contacts = this.readKey();
+    for (let i = 0, len = this.contacts.length; i < len; i++) {
+      if (this.contacts[i].id === contact.id) {
+        this.contacts[i] = contact;
+      }
+    }
+    this.writeKey(this.contacts);
   }
 
   deleteContact (id: number) {

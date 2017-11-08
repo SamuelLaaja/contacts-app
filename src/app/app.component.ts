@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {Router} from '@angular/router';
+import {ContactService} from './contact/services/contact.service';
 
 @Component({
   selector: 'ca-root',
@@ -8,5 +9,9 @@ import {Router} from '@angular/router';
 })
 export class AppComponent {
 
-  constructor (private router: Router) {}
+  constructor (private router: Router, private service: ContactService) {}
+
+  defaultContacts() {
+    this.service.defaultContacts();
+  }
 }

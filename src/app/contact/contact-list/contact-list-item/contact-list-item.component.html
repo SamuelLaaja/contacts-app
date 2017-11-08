@@ -1,7 +1,7 @@
 <mat-list-item (click)="selContact(contact)">
-  <mat-icon mat-list-icon class="material-icons orange600">face</mat-icon>
+  <mat-icon mat-list-icon class="material-icons ca-warn">face
+  </mat-icon>
   <h4 mat-line>{{contact.firstName}}</h4>
   <p mat-line>{{contact.lastName}}</p>
-
-  <mat-icon mat-list-icon class="material-icons orange600" (click)="delContact(contact)">delete_forever</mat-icon>
+  <mat-icon mat-list-icon class="material-icons ca-warn" (click)="delContact(contact)">delete_forever</mat-icon>
 </mat-list-item>

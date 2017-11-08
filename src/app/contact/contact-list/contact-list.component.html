@@ -1,6 +1,10 @@
 
 <mat-nav-list>
   <ca-contact-list-item *ngFor="let contact of contacts" [contact]="contact"
-                        (contactSelected)='onSelectContact($event)' (contactDelete)='onDeleteContact($event)'>
+                        (contactSelected)='onSelectContact($event)' (contactDelete)='onDeleteContact($event)' (click)='gotoContactDetailsForm(contact.id)'>
   </ca-contact-list-item>
 </mat-nav-list>
+
+<button class="addContactButton" title="Add new contact" mat-fab (click)="gotoContactDetailsForm()">
+  <mat-icon class="material-icons ca-accent-bg">add</mat-icon>
+</button>

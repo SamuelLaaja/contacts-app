@@ -1,22 +1,36 @@
-/*!important post attribute is for overriding value*/
 .ca-sidenav {
-  background-color: thistle;
   font-size: 20px;
   font-weight: bold;
   padding: 20px;
   display: flex;
   height: 100%;
-  width: 30%;
-  min-width: 180px;
+  width: 20%;
+  min-width: 200px;
   margin: 0;
+  color: whitesmoke;
 }
 
 .ca-toolbar {
   height: 50px;
   width: 100%;
   margin: 0;
-  padding: 8px;
+  padding: 0px 0px 0px 16px;
   color: whitesmoke;
-  background-color: rebeccapurple;
+}
+
+.ca-content {
+  padding: 16px;
+}
+
+.ca-person-svg {
+  fill:rgb(255,215,64);
+}
+
+.ca-person-svg-bg {
+  fill:rgb(128,107,32);
+}
+
+.ca-person-svg-stroke {
+  stroke:rgb(255,215,64);
 }
 

@@ -8,27 +8,39 @@ import {MaterialComponentsModule} from './material-components/material-component
 import {ContactService} from './contact/services/contact.service';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {RouterModule, Routes} from '@angular/router';
-import {MatSidenavModule, MatToolbarModule} from '@angular/material';
+import {ErrorStateMatcher, MatSidenavModule, MatToolbarModule, ShowOnDirtyErrorStateMatcher} from '@angular/material';
+import {ContactDetailsComponent } from './contact/contact-list/contact-details/contact-details.component';
+import {FormsModule} from '@angular/forms';
 
 const routes: Routes = [
+{
+    path: 'contacts/:id',
+    component: ContactDetailsComponent
+  },
+  {
+    path: 'contacts',
+    component: ContactListComponent
+  },
+  {
+    path: 'add-contact',
+    component: ContactDetailsComponent
+  },
   {
     path: '',
     component: ContactListComponent
   },
   {
-    path: 'contact-list',
+    path: '**',
     component: ContactListComponent
-  },
-  {
-    path: 'contact-item',
-    component: ContactListItemComponent
   }
 ];
+
 @NgModule({
   declarations: [
     AppComponent,
     ContactListComponent,
-    ContactListItemComponent
+    ContactListItemComponent,
+    ContactDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -36,6 +48,7 @@ const routes: Routes = [
     FlexLayoutModule,
     MatSidenavModule,
     MatToolbarModule,
+    FormsModule,
     RouterModule.forRoot(routes)
   ],
   providers: [ContactService],
