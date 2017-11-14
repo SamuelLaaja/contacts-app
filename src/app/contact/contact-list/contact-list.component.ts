@@ -10,20 +10,17 @@ import {Router} from '@angular/router';
 })
 export class ContactListComponent implements OnInit {
   contacts: Contact[];
-  selectedContact: Contact;
 
   constructor(private contactService: ContactService,  private router: Router) {
   }
 
+  // Fills contact list when starting up
   ngOnInit() {
     this.contacts = this.contactService.findContacts();
   }
 
-  onSelectContact(contact: Contact) {
-    this.selectedContact = contact;
-  }
-
-  gotoContactDetailsForm(input?: number) {
+  // Goes to /contacts/0 if input is not given.
+  goToContactDetailsForm(input?: number) {
     const id = input ? input : 0;
     this.router.navigate(['/contacts/' + id]);
   }

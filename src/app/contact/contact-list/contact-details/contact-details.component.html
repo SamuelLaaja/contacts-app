@@ -1,7 +1,8 @@
 <form (ngSubmit)="onSubmit()" #contactForm="ngForm" fxLayout="column">
 
   <mat-form-field>
-    <input matInput placeholder="First Name" type="text" required [(ngModel)]="contact.firstName" name="firstName" id="firstName" #firstName="ngModel">
+    <input matInput placeholder="First Name" type="text" required [(ngModel)]="contact.firstName" name="firstName"
+           id="firstName" #firstName="ngModel">
     <div [hidden]="firstName.valid || firstName.pristine"
          class="alert alert-danger">
       First name is required
@@ -9,7 +10,8 @@
   </mat-form-field>
 
   <mat-form-field>
-    <input matInput placeholder="Last Name" type="text" required [(ngModel)]="contact.lastName" name="lastName" id="lastName" #lastName="ngModel">
+    <input matInput placeholder="Last Name" type="text" required [(ngModel)]="contact.lastName" name="lastName"
+           id="lastName" #lastName="ngModel">
     <div [hidden]="lastName.valid || lastName.pristine"
          class="alert alert-danger">
       Last name is required
@@ -17,7 +19,8 @@
   </mat-form-field>
 
   <mat-form-field>
-    <input matInput placeholder="Phone Number" type="text" required [(ngModel)]="contact.phone" name="phone" id="phone" #phone="ngModel">
+    <input matInput placeholder="Phone Number" type="text" required [(ngModel)]="contact.phone" name="phone" id="phone"
+           #phone="ngModel">
     <div [hidden]="phone.valid || phone.pristine"
          class="alert alert-danger">
       Phone number is required
@@ -25,7 +28,8 @@
   </mat-form-field>
 
   <mat-form-field>
-    <input matInput placeholder="Street Address" type="text" required [(ngModel)]="contact.streetAddress" name="streetAddress" id="streetAddress" #streetAddress="ngModel">
+    <input matInput placeholder="Street Address" type="text" required [(ngModel)]="contact.streetAddress"
+           name="streetAddress" id="streetAddress" #streetAddress="ngModel">
     <div [hidden]="streetAddress.valid || streetAddress.pristine"
          class="alert alert-danger">
       Street address is required
@@ -33,7 +37,8 @@
   </mat-form-field>
 
   <mat-form-field>
-    <input matInput placeholder="City" type="text" required [(ngModel)]="contact.city" name="city" id="city" #city="ngModel">
+    <input matInput placeholder="City" type="text" required [(ngModel)]="contact.city" name="city" id="city"
+           #city="ngModel">
     <div [hidden]="city.valid || city.pristine"
          class="alert alert-danger">
       City is required
@@ -42,16 +47,42 @@
 
 </form>
 
-<button *ngIf="contact.id === 0" type="submit" [disabled]="!contactForm.form.valid" mat-raised-button color="accent" (click)="newContact(contact)">
-  <mat-icon class="material-icons">person_add</mat-icon>
-  Add user
-</button>
-<button *ngIf="contact.id > 0" type="submit" [disabled]="!contactForm.form.valid" mat-raised-button color="warn" (click)="editContact(contact)">
-  <mat-icon class="material-icons">save</mat-icon>
-  Save changes
-</button>
 
-<button mat-raised-button color="primary" (click)="gotoContactList()">
-  <mat-icon class="material-icons">cancel</mat-icon>
-  Cancel
-</button>
+<div fxLayout="row" fxLayoutAlign="start center">
+
+  <button mat-raised-button *ngIf="contact.id === 0" [disabled]="!contactForm.form.valid" type="submit" color="accent"
+          (click)="newContact(contact)">
+    <div fxFlex="30px" fxLayout="row" >
+    <mat-icon class="material-icons">person_add</mat-icon>
+    </div>
+    <div>
+      Add user
+    </div>
+  </button>
+
+  <button mat-raised-button *ngIf="contact.id > 0" type="submit" [disabled]="!contactForm.form.valid || !contactForm.dirty"
+          color="warn" (click)="editContact(contact)">
+    <div fxFlex="30px" fxLayout="row" >
+      <mat-icon class="material-icons">save</mat-icon>
+    </div>
+    <div>
+      Save changes
+    </div>
+  </button>
+
+  <button mat-raised-button color="primary" (click)="goToContactList()">
+    <div fxFlex="30px" fxLayout="row" >
+      <mat-icon class="material-icons">cancel</mat-icon>
+    </div>
+    <div>
+      Cancel
+    </div>
+  </button>
+</div>
+
+
+<!--<div>-->
+  <!--<iframe #map class="googleMap" frameborder="0"></iframe>-->
+  <!--<input matInput placeholder="Address" value="" (ngModelChange)="refreshMapFrame()" [(ngModel)]="streetAddress">-->
+  <!--@ViewChild('map') mapFrameElement: ElementRef;-->
+<!--</div>-->

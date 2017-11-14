@@ -1,19 +1,22 @@
-  <mat-toolbar class="ca-toolbar ca-primary-bg" (click)="sidenav.toggle()">
-    <button title="View side menu" mat-mini-fab color="primary">
-      <mat-icon class="material-icons ca-accent">menu</mat-icon>
-    </button>
+<div (click)="sidenav.toggle()" class="ca-toolbar ca-primary-bg mat-elevation-z8" >
+  <div fxLayout="row" fxFlex="200px" fxLayoutAlign="start center">
+  <button title="View side menu" mat-mini-fab color="accent">
+    <mat-icon class="material-icons">menu</mat-icon>
+  </button>
+  <h2 class="intend">
     Contact app
-  </mat-toolbar>
+  </h2>
+  </div>
+</div>
 
 <mat-sidenav-container class="ca-container">
-  <mat-sidenav fxLayoutAlign="top center" fxLayout="column" class="ca-sidenav ca-primary-bg" mode="push" opened="false" #sidenav >
-    SideBar
-    <span>
+  <mat-sidenav fxLayoutAlign="top center" fxLayout="column" class="ca-sidenav ca-primary-bg mat-elevation-z10"
+               mode="push" opened="false" #sidenav>
+    <h3>SideBar</h3>
       <button mat-button title="Add 3 default contacts" (click)="defaultContacts()">
       <mat-icon class="material-icons ca-accent">group_add</mat-icon>
       </button>
-    </span>
-    <span>
+      <!--svg-based person icon-->
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 width="200px" height="200px" viewBox="0 0 200 200" enable-background="new 0 0 200 200" xml:space="preserve">
 <circle class="ca-person-svg-bg ca-person-svg-stroke" cx="100" cy="100" r="92" stroke-width="8"/>
@@ -21,11 +24,12 @@
 <circle class="ca-person-svg" cx="95" cy="150" r="40"/>
 <circle class="ca-person-svg" cx="105" cy="150" r="40"/>
 </svg>
-    </span>
-    Tero Testikäyttäjä
+    <h4>Tero Testikäyttäjä</h4>
   </mat-sidenav>
+
   <div class="ca-content">
-  <router-outlet></router-outlet>
+    <router-outlet></router-outlet>
   </div>
+
 </mat-sidenav-container>
 

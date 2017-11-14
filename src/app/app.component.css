@@ -5,17 +5,25 @@
   display: flex;
   height: 100%;
   width: 20%;
-  min-width: 200px;
+  min-width: 250px;
   margin: 0;
   color: whitesmoke;
+  z-index: 3;
 }
 
 .ca-toolbar {
-  height: 50px;
+  height: 64px;
+  /*min-height: 64px!important;*/
+  /*max-height: 64px!important;*/
   width: 100%;
   margin: 0;
   padding: 0px 0px 0px 16px;
   color: whitesmoke;
+  z-index: 2;
+}
+
+.intend {
+  padding-left: 16px;
 }
 
 .ca-content {

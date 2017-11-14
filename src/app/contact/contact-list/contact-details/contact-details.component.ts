@@ -1,20 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, ElementRef, OnInit} from '@angular/core';
 import { Router, ActivatedRoute} from '@angular/router';
 import 'rxjs/add/operator/switchMap';
 import {ContactService} from '../../services/contact.service';
 import {Contact} from '../../contact';
-// import {ErrorStateMatcher} from '@angular/material';
-// import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
-// import {ErrorStateMatcher} from '@angular/material';
-
-/** Error when invalid control is dirty, touched, or submitted. */
-// export class MyErrorStateMatcher implements ErrorStateMatcher {
-//   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
-//     const isSubmitted = form && form.submitted;
-//     return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
-//   }
-// }
-
 
 @Component({
   selector: 'ca-contact-details',
@@ -23,12 +11,7 @@ import {Contact} from '../../contact';
 })
 export class ContactDetailsComponent implements OnInit {
   contact: Contact;
-  // matcher = new MyErrorStateMatcher();
-  //
-  // customFormControl = new FormControl('', [
-  //   Validators.required
-  // ]);
-
+  mapFrameElement: ElementRef;
   submitted = false;
   onSubmit() { this.submitted = true; }
 
@@ -36,15 +19,13 @@ export class ContactDetailsComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private service: ContactService) {
-
   }
 
+    // Creates empty form from empty Contact object if id is not found. Used when creating a new contact.
   ngOnInit() {
-
     const id = Number(this.route.snapshot.paramMap.get('id'));
     this.contact = this.service.findContactById(id);
-    // change html field values based on this.contact found values.
-    if (!this.contact){
+    if (!this.contact) {
       this.contact = new Contact(0);
     }
   }
@@ -61,20 +42,14 @@ export class ContactDetailsComponent implements OnInit {
     this.router.navigate(['/contacts']);
   }
 
-  gotoContactList() {
+  goToContactList() {
     this.router.navigate(['/contacts']);
   }
 
-  // to pass parameter which contact to highlight:
-  // gotoHeroes(hero: Hero) {
-  //   let heroId = hero ? hero.id : null;
-  //   // Pass along the hero id if available
-  //   // so that the HeroList component can select that hero.
-  //   // Include a junk 'foo' property for fun.
-  //   this.router.navigate(['/heroes', { id: heroId, foo: 'foo' }]);
-  // }
-
-
-
-
+  refreshMapFrame() {
+    setTimeout(() => {
+      const mapFrame = this.mapFrameElement.nativeElement;
+      mapFrame.src = 'https://maps.google.com/maps?q=' + this.contact.streetAddress + ',' + this.contact.city + '&output=embed';
+    });
+  }
 }

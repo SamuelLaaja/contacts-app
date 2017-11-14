@@ -11,6 +11,7 @@ export class AppComponent {
 
   constructor (private router: Router, private service: ContactService) {}
 
+  // Quick way to add placeholder users. Remove when publishing
   defaultContacts() {
     this.service.defaultContacts();
   }

@@ -8,9 +8,10 @@ import {MaterialComponentsModule} from './material-components/material-component
 import {ContactService} from './contact/services/contact.service';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {RouterModule, Routes} from '@angular/router';
-import {ErrorStateMatcher, MatSidenavModule, MatToolbarModule, ShowOnDirtyErrorStateMatcher} from '@angular/material';
+import {MatSidenavModule, MatToolbarModule} from '@angular/material';
 import {ContactDetailsComponent } from './contact/contact-list/contact-details/contact-details.component';
 import {FormsModule} from '@angular/forms';
+import { ContactAddressPipe } from './contact/pipes/contact-address.pipe';
 
 const routes: Routes = [
 {
@@ -40,7 +41,8 @@ const routes: Routes = [
     AppComponent,
     ContactListComponent,
     ContactListItemComponent,
-    ContactDetailsComponent
+    ContactDetailsComponent,
+    ContactAddressPipe
   ],
   imports: [
     BrowserModule,

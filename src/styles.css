@@ -8,40 +8,27 @@
   src: url('../src/assets/material-icons.woff2');
 }
 
-html, body, ca-root, .ca-container {
+html, body, ca-root {
+  display: flex;
+  flex-direction: column;
+  font-family: "Palatino Linotype";
   height: 100%;
   width: 100%;
   margin: 0;
-  background-color: lightgrey;
+  padding: 0;
 }
 
+.ca-container{
+  flex: 1;
+  margin: 0;
+  padding: 0;
+  background-color: rgb(213, 208, 255);
+}
 
 .material-icons {
   font-family: 'Material Icons';
   font-size: 24px;
 }
-
-/* Rules for sizing the icon. */
-.material-icons.md-18 {
-  font-size: 18px;
-}
-
-.material-icons.md-24 {
-  font-size: 24px;
-}
-
-.material-icons.md-36 {
-  font-size: 36px;
-}
-
-.material-icons.md-48 {
-  font-size: 48px;
-}
-
-.material-icons.orange600 {
-  color: #EB4C00;
-}
-
 
 .ca-primary {
   color: rgb(103, 58, 183)!important;

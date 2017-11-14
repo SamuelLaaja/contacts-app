@@ -10,19 +10,14 @@ import {Contact} from '../../contact';
 export class ContactListItemComponent implements OnInit {
 
   @Input() contact: Contact;
-  @Output() contactSelected: EventEmitter<Contact>;
   @Output() contactDelete: EventEmitter<Contact>;
+  hover = false;
 
   constructor() {
-    this.contactSelected = new EventEmitter();
     this.contactDelete = new EventEmitter();
   }
 
   ngOnInit() {
-  }
-
-  selContact(contact: Contact) {
-    this.contactSelected.emit(contact);
   }
 
   delContact(contact: Contact) {
