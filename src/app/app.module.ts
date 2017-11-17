@@ -12,12 +12,21 @@ import {MatSidenavModule, MatToolbarModule} from '@angular/material';
 import {ContactDetailsComponent } from './contact/contact-list/contact-details/contact-details.component';
 import {FormsModule} from '@angular/forms';
 import { ContactAddressPipe } from './contact/pipes/contact-address.pipe';
+// import { LoginComponent } from './contact/user/login/login.component';
+// import { CanActivate } from '@angular/router';
+// import {AuthenticationGuard} from './contact/guard/authentication.guard';
 
 const routes: Routes = [
 
+  // {
+  //   path: 'login',
+  //   component: LoginComponent
+  // },
   {
     path: 'contacts/:id',
     component: ContactDetailsComponent
+    // ,
+    // canActivate: [AuthenticationGuard]
   },
   {
     path: 'contacts',
@@ -44,6 +53,8 @@ const routes: Routes = [
     ContactListItemComponent,
     ContactDetailsComponent,
     ContactAddressPipe
+    // ,
+    // LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -54,7 +65,9 @@ const routes: Routes = [
     FormsModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [ContactService],
+  providers: [ContactService
+    // , AuthenticationGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
