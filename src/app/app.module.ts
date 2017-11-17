@@ -14,7 +14,8 @@ import {FormsModule} from '@angular/forms';
 import { ContactAddressPipe } from './contact/pipes/contact-address.pipe';
 
 const routes: Routes = [
-{
+
+  {
     path: 'contacts/:id',
     component: ContactDetailsComponent
   },

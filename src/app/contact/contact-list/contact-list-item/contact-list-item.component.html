@@ -1,21 +1,28 @@
 <mat-list-item (mouseover)="hover=true" (mouseleave)="hover=false" [ngStyle]="hover ? {color: 'red'} : {color: black}">
-  <div fxLayout="row" fxFlex fxLayoutAlign="space-between stretch" >
+
+  <div fxLayout="row"  fxFlex="50%" fxLayoutAlign="start stretch">
 
     <div mat-line fxFlex="40px" fxLayout="column">
       <mat-icon color="warn">face</mat-icon>
     </div>
 
-    <div mat-line fxLayout="column" fxFlex>
+    <div mat-line fxLayout="column">
       <div class="ca-contact-big-text">{{contact.firstName}}</div>
       <div class="ca-contact-small-text">{{contact.lastName}}</div>
     </div>
 
-    <div mat-line fxLayout="column" fxLayoutAlign="center end"  fxFlex="50%" fxShow="{{hover}}">
-      <div class="ca-contact-big-text">{{contact.phone}}</div>
+  </div>
+  <div fxLayout="row" fxFlex="50%" fxLayoutAlign="end center">
+
+    <div mat-line fxLayout="column" style="text-align: right" fxShow="{{hover}}">
+      <div class="ca-contact-big-text">
+        <mat-icon style="font-size:16px">phone</mat-icon>
+        {{contact.phone}}
+      </div>
       <div class="ca-contact-small-text">{{contact | contactAddress}}</div>
     </div>
 
-    <div mat-line fxFlex="40px" fxLayoutAlign="center end" fxLayout="column" >
+    <div mat-line fxFlex="40px" fxLayout="column" >
       <button mat-icon-button color="warn" title="Delete contact" (click)="delContact(contact)">
         <mat-icon>delete_forever</mat-icon>
       </button>
