@@ -33,10 +33,10 @@ namespace ContactsWebApi.Controllers
 
         // POST / Add
         [HttpPost]
-        public void Post([FromBody]string firstName, [FromBody]string lastName, [FromBody]string phone, [FromBody]string streetAddress, [FromBody]string city)
+        public void Post([FromBody]Contact inputContact)
         {
             var contacts = _contactService.FindContacts();
-            var contact = new Contact(contacts.Count+1, firstName, lastName, phone, streetAddress, city);
+            var contact = new Contact(contacts.Count+1, inputContact.FirstName, inputContact.LastName, inputContact.Phone, inputContact.StreetAddress, inputContact.City);
             _contactService.AddContact(contact);
         }
 
