@@ -33,27 +33,30 @@ namespace ContactsWebApi.Controllers
 
         // POST / Add
         [HttpPost]
-        public void Post([FromBody]Contact inputContact)
+        public IActionResult Post([FromBody]Contact contact)
         {
-            var contacts = _contactService.FindContacts();
-            var contact = new Contact(contacts.Count+1, inputContact.FirstName, inputContact.LastName, inputContact.Phone, inputContact.StreetAddress, inputContact.City);
-            _contactService.AddContact(contact);
+            var addedContact = _contactService.AddContact(contact);
+            return new JsonResult(addedContact);
         }
 
         // DELETE
         [HttpDelete("{id}")]
-        public void DeleteContact(int id)
+        public IActionResult DeleteContact(int id)
         {
             var contact = _contactService.FindContactById(id);
-            _contactService.DeleteContact(contact);
+            if (contact != null)
+            {
+                _contactService.DeleteContact(contact);
+            }
+            return new NoContentResult();
         }
 
         // PUT / Edit
-        [HttpPut("{id}")]
-        public void EditContact(int id, [FromBody]string firstName, [FromBody]string lastName, [FromBody]string phone, [FromBody]string streetAddress, [FromBody]string city)
+        [HttpPut]
+        public IActionResult EditContact([FromBody]Contact contact)
         {
-            var contact = new Contact(id, firstName, lastName, phone, streetAddress, city);
-            _contactService.EditContact(contact);
+             _contactService.EditContact(contact);
+            return new NoContentResult();
         }
 
     }

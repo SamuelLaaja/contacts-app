@@ -1,33 +1,37 @@
 <mat-list-item (mouseover)="hover=true" (mouseleave)="hover=false" [ngStyle]="hover ? {color: 'red'} : {color: black}">
 
-  <div fxLayout="row"  fxFlex="50%" fxLayoutAlign="start stretch">
+  <div class="ca-div" title="Edit contact" fxLayoutAlign="start center" (click)="editContact(contact.id)">
 
-    <div mat-line fxFlex="40px" fxLayout="column">
-      <mat-icon color="warn">face</mat-icon>
+    <div fxLayout="row" fxFlex="1 0 auto" fxLayoutAlign="start stretch">
+
+      <div mat-line fxFlex="40px" fxLayout="column">
+        <mat-icon color="warn">face</mat-icon>
+      </div>
+
+      <div mat-line fxLayout="column">
+        <div class="ca-contact-big-text">{{contact.firstName}}</div>
+        <div class="ca-contact-small-text">{{contact.lastName}}</div>
+      </div>
+
     </div>
+    <div fxLayout="row" fxFlex="0 1 auto" fxShow="{{hover}}" fxLayoutAlign="end center">
 
-    <div mat-line fxLayout="column">
-      <div class="ca-contact-big-text">{{contact.firstName}}</div>
-      <div class="ca-contact-small-text">{{contact.lastName}}</div>
+      <div mat-line fxLayout="column" style="text-align: right" >
+        <div class="ca-contact-big-text">
+          <mat-icon style="font-size:16px">phone</mat-icon>
+          {{contact.phone}}
+        </div>
+        <div class="ca-contact-small-text">{{contact | contactAddress}}</div>
+      </div>
     </div>
 
   </div>
-  <div fxLayout="row" fxFlex="50%" fxLayoutAlign="end center">
 
-    <div mat-line fxLayout="column" style="text-align: right" fxShow="{{hover}}">
-      <div class="ca-contact-big-text">
-        <mat-icon style="font-size:16px">phone</mat-icon>
-        {{contact.phone}}
-      </div>
-      <div class="ca-contact-small-text">{{contact | contactAddress}}</div>
-    </div>
-
-    <div mat-line fxFlex="40px" fxLayout="column" >
-      <button mat-icon-button color="warn" title="Delete contact" (click)="delContact(contact)">
+  <div class="ca-div2" fxLayoutAlign="center center" title="Delete contact" (click)="delContact(contact)">
+      <button mat-icon-button color="warn">
         <mat-icon>delete_forever</mat-icon>
       </button>
-    </div>
-
   </div>
+
 </mat-list-item>
 

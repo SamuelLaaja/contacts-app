@@ -5,13 +5,16 @@ import {AppComponent} from './app.component';
 import {ContactListComponent} from './contact/contact-list/contact-list.component';
 import {ContactListItemComponent} from './contact/contact-list/contact-list-item/contact-list-item.component';
 import {MaterialComponentsModule} from './material-components/material-components.module';
-import {ContactService} from './contact/services/contact.service';
+// import {ContactLocalStorageService} from './contact/services/contact-local-storage.service';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {RouterModule, Routes} from '@angular/router';
 import {MatSidenavModule, MatToolbarModule} from '@angular/material';
 import {ContactDetailsComponent } from './contact/contact-list/contact-details/contact-details.component';
 import {FormsModule} from '@angular/forms';
 import { ContactAddressPipe } from './contact/pipes/contact-address.pipe';
+import {ContactService} from './contact/services/contact.service';
+import {ContactHttpService} from './contact/services/contact-http.service';
+import {HttpClientModule} from '@angular/common/http';
 // import { LoginComponent } from './contact/user/login/login.component';
 // import { CanActivate } from '@angular/router';
 // import {AuthenticationGuard} from './contact/guard/authentication.guard';
@@ -53,8 +56,7 @@ const routes: Routes = [
     ContactListItemComponent,
     ContactDetailsComponent,
     ContactAddressPipe
-    // ,
-    // LoginComponent
+    // , LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -63,9 +65,13 @@ const routes: Routes = [
     MatSidenavModule,
     MatToolbarModule,
     FormsModule,
+    HttpClientModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [ContactService
+  providers: [
+    // ContactLocalStorageService,
+    ContactService,
+    ContactHttpService
     // , AuthenticationGuard
   ],
   bootstrap: [AppComponent]

@@ -1,6 +1,6 @@
 <mat-nav-list>
   <ca-contact-list-item fxFlexFill *ngFor="let contact of contacts" [contact]="contact"
-                        (contactDelete)='onDeleteContact($event)' (click)='goToContactDetailsForm(contact.id)'>
+                        (contactDelete)='onDeleteContact($event)' (contactEdit)='goToContactDetailsForm($event)'>
   </ca-contact-list-item>
 </mat-nav-list>
 

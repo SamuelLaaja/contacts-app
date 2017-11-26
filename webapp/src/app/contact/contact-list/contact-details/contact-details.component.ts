@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 import 'rxjs/add/operator/switchMap';
-import {ContactService} from '../../services/contact.service';
 import {Contact} from '../../contact';
 import {DomSanitizer, SafeResourceUrl,} from '@angular/platform-browser';
+import {ContactService} from '../../services/contact.service';
 
 @Component({
   selector: 'ca-contact-details',
@@ -22,30 +22,35 @@ export class ContactDetailsComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
               private router: Router,
-              private service: ContactService,
+              private contactService: ContactService,
               private sanitizer: DomSanitizer) {
   }
 
-  // Creates empty form from empty Contact object if id is not found. Used when creating a new contact.
   ngOnInit() {
     const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.contact = this.service.findContactById(id);
-    if (!this.contact) {
+
+    // Creates empty form from empty Contact object if id is not found. Used when creating a new contact.
+    if (id === 0) {
       this.contact = new Contact(0);
+    } else {
+      this.contactService.findContactById(id).subscribe(
+        contact => {
+          this.contact = contact;
+        }
+      );
     }
+
     this.showMap = false;
     this.editMap = false;
   }
 
   newContact(contact: Contact) {
-    this.service.saveContact(contact.firstName,
-      contact.lastName, contact.phone,
-      contact.streetAddress, contact.city);
+    this.contactService.newContact(contact);
     this.router.navigate(['/contacts']);
   }
 
   editContact(contact: Contact) {
-    this.service.editContact(contact);
+    this.contactService.editContact(contact);
     this.router.navigate(['/contacts']);
   }
 

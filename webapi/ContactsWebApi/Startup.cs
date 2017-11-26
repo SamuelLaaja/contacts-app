@@ -22,6 +22,10 @@ namespace ContactsWebApi
             services.AddScoped<IContactService, ContactService>();
             services.AddSingleton<IContactRepository, ContactRepository>();
             services.AddMvc();
+            services.AddCors(o => o.AddPolicy("ContactsAppPolicy", builder =>
+            {
+                builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
+            }));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -32,6 +36,7 @@ namespace ContactsWebApi
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseCors("ContactsAppPolicy");
             app.UseMvc();
         }
     }

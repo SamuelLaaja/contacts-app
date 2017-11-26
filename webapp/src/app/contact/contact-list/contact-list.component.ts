@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Contact} from '../contact';
-import {ContactService} from '../services/contact.service';
 import {Router} from '@angular/router';
+import {ContactService} from '../services/contact.service';
 
 @Component({
   selector: 'ca-contact-list',
@@ -9,17 +9,20 @@ import {Router} from '@angular/router';
   styleUrls: ['./contact-list.component.css']
 })
 export class ContactListComponent implements OnInit {
+  // used for populating contact list. *ngFor="let contact of contacts"
   contacts: Contact[];
 
-  constructor(private contactService: ContactService,  private router: Router) {
+  constructor(private contactService: ContactService, private router: Router) {
   }
 
   // Fills contact list when starting up
   ngOnInit() {
-    this.contacts = this.contactService.findContacts();
+    this.contactService.findContacts().subscribe((contacts: Contact[]) => {
+      this.contacts = contacts;
+    });
   }
 
-  // Goes to /contacts/0 if input is not given.
+  // Goes to /contacts/0 if no input is given.
   goToContactDetailsForm(input?: number) {
     const id = input ? input : 0;
     this.router.navigate(['/contacts/' + id]);
