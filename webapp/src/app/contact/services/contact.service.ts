@@ -1,9 +1,9 @@
 import {Injectable} from '@angular/core';
-// import {ContactLocalStorageService} from './contact-local-storage.service';
 import {Contact} from '../contact';
 import {ContactHttpService} from './contact-http.service';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
+import {HttpErrorResponse} from '@angular/common/http';
 
 @Injectable()
 export class ContactService {
@@ -11,9 +11,18 @@ export class ContactService {
   private contacts: Contact[];
 
   constructor(
-    // private localStorage: ContactLocalStorageService,
     private contactHttpService: ContactHttpService) {
     this.contacts = [];
+  }
+
+  biggestID(): number {
+    let idCounter = 0;
+    for (let i = 0, len = this.contacts.length; i < len; i++) {
+      if (this.contacts[i].id > idCounter) {
+        idCounter = this.contacts[i].id;
+      }
+    }
+    return idCounter;
   }
 
   findContacts(reload?: boolean): Observable<Contact[]> {
@@ -23,6 +32,14 @@ export class ContactService {
       return this.contactHttpService.get().map((contacts) => {
         this.contacts = contacts;
         return contacts;
+      }, (err: HttpErrorResponse) => {
+        if (err.error instanceof Error) {
+          // A client-side or network error occurred.
+          console.log('An error occurred:', err.error.message);
+        } else {
+          // The backend returned an unsuccessful response code.
+          console.log(`Backend returned code ${err.status}, body was: ${err.error}`);
+        }
       });
 
     } else {
@@ -46,6 +63,14 @@ export class ContactService {
           this.contacts.push(contact);
         }
         return contact;
+      }, (err: HttpErrorResponse) => {
+        if (err.error instanceof Error) {
+          // A client-side or network error occurred.
+          console.log('An error occurred:', err.error.message);
+        } else {
+          // The backend returned an unsuccessful response code.
+          console.log(`Backend returned code ${err.status}, body was: ${err.error}`);
+        }
       });
     }
   }
@@ -62,8 +87,15 @@ export class ContactService {
       // if success, cache add
       newContact => {
         this.contacts.push(newContact);
+      }, (err: HttpErrorResponse) => {
+      if (err.error instanceof Error) {
+        // A client-side or network error occurred.
+        console.log('An error occurred:', err.error.message);
+      } else {
+        // The backend returned an unsuccessful response code.
+        console.log(`Backend returned code ${err.status}, body was: ${err.error}`);
       }
-    );
+    });
   }
 
   editContact(contact: Contact) {
@@ -77,7 +109,15 @@ export class ContactService {
             break;
           }
         }
-      });
+      }, (err: HttpErrorResponse) => {
+      if (err.error instanceof Error) {
+        // A client-side or network error occurred.
+        console.log('An error occurred:', err.error.message);
+      } else {
+        // The backend returned an unsuccessful response code.
+        console.log(`Backend returned code ${err.status}, body was: ${err.error}`);
+      }
+    });
   }
 
   deleteContact(id: number) {
@@ -90,6 +130,14 @@ export class ContactService {
             this.contacts.splice(i, 1);
             break;
           }
+        }
+      }, (err: HttpErrorResponse) => {
+        if (err.error instanceof Error) {
+          // A client-side or network error occurred.
+          console.log('An error occurred:', err.error.message);
+        } else {
+          // The backend returned an unsuccessful response code.
+          console.log(`Backend returned code ${err.status}, body was: ${err.error}`);
         }
       });
   }

@@ -1,8 +1,9 @@
-<div (click)="sidenav.toggle()" class="ca-toolbar ca-primary-bg mat-elevation-z8" >
+<div (click)="sidenav.toggle()" class="ca-toolbar ca-accent ca-primary-bg mat-elevation-z8" >
   <div fxLayout="row" fxFlex="200px" fxLayoutAlign="start center">
-  <button title="View side menu" mat-mini-fab color="accent">
+  <button title="View side menu" mat-mini-fab>
     <mat-icon class="material-icons">menu</mat-icon>
   </button>
+
   <h2 class="intend">
     Contact app
   </h2>
@@ -16,14 +17,7 @@
       <button mat-button title="Add 3 default contacts" (click)="defaultContacts()">
       <mat-icon class="material-icons ca-accent">group_add</mat-icon>
       </button>
-      <!--svg-based person icon-->
-<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 width="200px" height="200px" viewBox="0 0 200 200" enable-background="new 0 0 200 200" xml:space="preserve">
-<circle class="ca-person-svg-bg ca-person-svg-stroke" cx="100" cy="100" r="92" stroke-width="8"/>
-<circle class="ca-person-svg" cx="100" cy="75" r="25"/>
-<circle class="ca-person-svg" cx="95" cy="150" r="40"/>
-<circle class="ca-person-svg" cx="105" cy="150" r="40"/>
-</svg>
+    <img src="/assets/person.svg" />
     <h4>Tero Testikäyttäjä</h4>
   </mat-sidenav>
 

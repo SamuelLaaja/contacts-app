@@ -1,6 +1,6 @@
-<mat-list-item (mouseover)="hover=true" (mouseleave)="hover=false" [ngStyle]="hover ? {color: 'red'} : {color: black}">
+<mat-list-item (mouseover)="hover=true" (mouseleave)="hover=false">
 
-  <div class="ca-div" title="Edit contact" fxLayoutAlign="start center" (click)="editContact(contact.id)">
+  <div class="ca-text-div" title="Edit contact" fxLayoutAlign="start center" (click)="editContact(contact.id)">
 
     <div fxLayout="row" fxFlex="1 0 auto" fxLayoutAlign="start stretch">
 
@@ -14,7 +14,7 @@
       </div>
 
     </div>
-    <div fxLayout="row" fxFlex="0 1 auto" fxShow="{{hover}}" fxLayoutAlign="end center">
+    <div fxLayout="row" fxFlex="0 1 auto" fxShow="{{hover}}" fxHide.xs="true" class="hidden-xs" fxLayoutAlign="end center">
 
       <div mat-line fxLayout="column" style="text-align: right" >
         <div class="ca-contact-big-text">
@@ -27,7 +27,7 @@
 
   </div>
 
-  <div class="ca-div2" fxLayoutAlign="center center" title="Delete contact" (click)="delContact(contact)">
+  <div class="ca-trash-div" fxLayoutAlign="center center" title="Delete contact" (click)="delContact(contact)">
       <button mat-icon-button color="warn">
         <mat-icon>delete_forever</mat-icon>
       </button>

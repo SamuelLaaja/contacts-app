@@ -57,6 +57,8 @@ namespace ContactsWebApi.Controllers
         {
              _contactService.EditContact(contact);
             return new NoContentResult();
+            //return new BadRequestResult();;
+            //return new BadRequestObjectResult(new {ErrorText = "Error Occured!"});
         }
 
     }

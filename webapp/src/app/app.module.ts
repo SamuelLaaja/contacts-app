@@ -5,7 +5,6 @@ import {AppComponent} from './app.component';
 import {ContactListComponent} from './contact/contact-list/contact-list.component';
 import {ContactListItemComponent} from './contact/contact-list/contact-list-item/contact-list-item.component';
 import {MaterialComponentsModule} from './material-components/material-components.module';
-// import {ContactLocalStorageService} from './contact/services/contact-local-storage.service';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {RouterModule, Routes} from '@angular/router';
 import {MatSidenavModule, MatToolbarModule} from '@angular/material';
@@ -69,7 +68,6 @@ const routes: Routes = [
     RouterModule.forRoot(routes)
   ],
   providers: [
-    // ContactLocalStorageService,
     ContactService,
     ContactHttpService
     // , AuthenticationGuard

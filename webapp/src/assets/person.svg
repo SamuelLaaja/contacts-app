@@ -1,0 +1,27 @@
+<!--svg-based person icon-->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="200px" height="200px" viewBox="0 0 200 200" enable-background="new 0 0 200 200" xml:space="preserve">
+ <style>
+/* <![CDATA[ */
+
+.ca-person-svg {
+  fill:rgb(255,215,64);
+}
+
+.ca-person-svg-bg {
+  fill:rgb(128,107,32);
+}
+
+.ca-person-svg-stroke {
+  stroke:rgb(255,215,64);
+}
+    /* ]]> */
+
+   </style>
+
+<circle class="ca-person-svg-bg ca-person-svg-stroke" cx="100" cy="100" r="92" stroke-width="8"/>
+<circle class="ca-person-svg" cx="100" cy="75" r="25"/>
+<circle class="ca-person-svg" cx="95" cy="150" r="40"/>
+<circle class="ca-person-svg" cx="105" cy="150" r="40"/>
+</svg>
+

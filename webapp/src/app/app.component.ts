@@ -9,7 +9,8 @@ import {ContactService} from './contact/services/contact.service';
 })
 export class AppComponent {
 
-  constructor (private router: Router, private service: ContactService) {}
+  constructor (private router: Router, private service: ContactService) {
+  }
 
   // Quick way to add placeholder users. Remove when publishing
   defaultContacts() {

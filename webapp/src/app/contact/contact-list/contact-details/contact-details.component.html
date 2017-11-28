@@ -3,7 +3,7 @@
 
     <mat-form-field>
       <input matInput placeholder="First Name" type="text" required [(ngModel)]="contact.firstName" name="firstName"
-             id="firstName" #firstName="ngModel" (blur)="editMap=false" (focus)="editMap=true">
+             id="firstName" #firstName="ngModel" (blur)="editMap=false" (focus)="editMap=true" autocomplete=off>
       <div [hidden]="firstName.valid || firstName.pristine"
            class="alert alert-danger">
         First name is required
@@ -12,7 +12,7 @@
 
     <mat-form-field>
       <input matInput placeholder="Last Name" type="text" required [(ngModel)]="contact.lastName" name="lastName"
-             id="lastName" #lastName="ngModel" (blur)="editMap=false" (focus)="editMap=true">
+             id="lastName" #lastName="ngModel" (blur)="editMap=false" (focus)="editMap=true" autocomplete=off>
       <div [hidden]="lastName.valid || lastName.pristine"
            class="alert alert-danger">
         Last name is required
@@ -21,7 +21,7 @@
 
     <mat-form-field>
       <input matInput placeholder="Phone Number" type="text" required [(ngModel)]="contact.phone" name="phone"
-             id="phone" #phone="ngModel" (blur)="editMap=false" (focus)="editMap=true">
+             id="phone" #phone="ngModel" (blur)="editMap=false" (focus)="editMap=true" autocomplete=off>
       <mat-icon matSuffix>phone</mat-icon>
       <div [hidden]="phone.valid || phone.pristine"
            class="alert alert-danger">
@@ -31,7 +31,7 @@
 
     <mat-form-field>
       <input matInput placeholder="Street Address" type="text" required [(ngModel)]="contact.streetAddress"
-             name="streetAddress" id="streetAddress" #streetAddress="ngModel" (blur)="editMap=false" (focus)="editMap=true">
+             name="streetAddress" id="streetAddress" #streetAddress="ngModel" (blur)="editMap=false" (focus)="editMap=true" autocomplete=off>
       <div [hidden]="streetAddress.valid || streetAddress.pristine"
            class="alert alert-danger">
         Street address is required
@@ -40,7 +40,7 @@
 
     <mat-form-field>
       <input matInput placeholder="City" type="text" required [(ngModel)]="contact.city" name="city" id="city"
-             #city="ngModel" (blur)="editMap=false" (focus)="editMap=true">
+             #city="ngModel" (blur)="editMap=false" (focus)="editMap=true" autocomplete=off>
       <div [hidden]="city.valid || city.pristine"
            class="alert alert-danger">
         City is required
