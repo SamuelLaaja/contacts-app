@@ -15,15 +15,6 @@ export class ContactService {
     this.contacts = [];
   }
 
-  biggestID(): number {
-    let idCounter = 0;
-    for (let i = 0, len = this.contacts.length; i < len; i++) {
-      if (this.contacts[i].id > idCounter) {
-        idCounter = this.contacts[i].id;
-      }
-    }
-    return idCounter;
-  }
 
   findContacts(reload?: boolean): Observable<Contact[]> {
 
