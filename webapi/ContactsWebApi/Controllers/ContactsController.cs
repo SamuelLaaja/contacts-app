@@ -35,9 +35,8 @@ namespace ContactsWebApi.Controllers
         [HttpPost]
         public IActionResult Post([FromBody]Contact contact)
         {
-            _contactService.AddContact(contact);
-            //return new JsonResult(addedContact);
-            return new NoContentResult();
+            return new JsonResult(_contactService.AddContact(contact));
+//            return new NoContentResult();
         }
 
         // DELETE

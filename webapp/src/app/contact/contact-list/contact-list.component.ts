@@ -23,8 +23,8 @@ export class ContactListComponent implements OnInit {
   }
 
   // Goes to /contacts/0 if no input is given.
-  goToContactDetailsForm(input?: number) {
-    const id = input ? input : 0;
+  goToContactDetailsForm(contact?: Contact) {
+    const id = contact ? contact.id : 0;
     this.router.navigate(['/contacts/' + id]);
   }
 
