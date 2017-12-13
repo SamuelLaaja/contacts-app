@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ContactsWebApi.Config;
 using ContactsWebApi.Models;
 
 namespace ContactsWebApi.Repositories
@@ -9,52 +10,48 @@ namespace ContactsWebApi.Repositories
     public class ContactRepository : IContactRepository
     {
 
-        private List<Contact> _contacts;
+        private readonly ContactsDbContext _context;
 
-        public ContactRepository()
+        public ContactRepository(ContactsDbContext context)
         {
-            Initialize();
+            _context = context;
+            //Initialize();
         }
 
         public List<Contact> GetAll()
         {
-            return _contacts;
+            return _context.Contacts.ToList();
+           
         }
 
         public Contact GetById(int id)
         {
-            var contact = _contacts.FirstOrDefault(c => c.Id == id);
-            return contact;
+            return _context.Contacts.FirstOrDefault(c => c.Id == id);
         }
 
         public Contact Add(Contact contact)
         {
-            var newContact = new Contact(_contacts.Count + 1, contact.FirstName, contact.LastName, contact.Phone, contact.StreetAddress, contact.City);
-            _contacts.Add(newContact);
-            return newContact;
+            _context.Contacts.Add(contact);
+            _context.SaveChanges();
+            return contact;
         }
 
         public void Delete(Contact contact)
         {
-            _contacts.Remove(contact);
+            _context.Contacts.Remove(contact);
+            _context.SaveChanges();
         }
 
         public void Edit(Contact contact)
         {
-            var id = contact.Id;
-            var findContact = _contacts.FirstOrDefault(c => c.Id == id);
-            if (findContact == null) return;
-            _contacts.Remove(findContact);
-            _contacts.Add(contact);
+            _context.Contacts.Update(contact);
+            _context.SaveChanges();
         }
 
         private void Initialize()
         {
-            _contacts = new List<Contact>
-            {
-                new Contact(1,"Kaarle","Kuninkaallinen", "01324678", "Kuninkaanpalatsi 1", "Keskimaa"),
-                new Contact(2, "Yrjö", "Ylhäinen", "045614165", "Keisarinkuja 2", "Ylämaa")
-            };
+            Add(new Contact("Kaarle", "Kuninkaallinen", "01324678", "Kuninkaanpalatsi 1", "Keskimaa"));
+            Add(new Contact("Yrjö", "Ylhäinen", "045614165", "Keisarinkuja 2", "Ylämaa"));
         }
     }
 }
