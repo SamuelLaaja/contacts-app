@@ -1,0 +1,45 @@
+<div fxLayout="column" fxFlex fxLayoutAlign="center center">
+  <form (ngSubmit)="login(userName, passWord)" #contactForm="ngForm" fxLayout="column"
+        fxLayoutAlign="space-between center">
+
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <mat-icon color="warn" class="material-icons">account_circle</mat-icon>
+      <mat-form-field>
+        <input matInput placeholder="First Name" type="email" required [(ngModel)]="userName" name="userName"
+               id="userName" #ngUserName="ngModel">
+        <div [hidden]="ngUserName.valid || ngUserName.pristine"
+             class="alert alert-danger">
+          User name or email is required
+        </div>
+      </mat-form-field>
+    </div>
+
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <mat-icon color="warn" class="material-icons">lock</mat-icon>
+      <mat-form-field>
+        <input matInput placeholder="Password" type="password" required [(ngModel)]="passWord" name="passWord"
+               id="passWord" #ngPassWord="ngModel">
+        <div [hidden]="ngPassWord.valid || ngPassWord.pristine"
+             class="alert alert-danger">
+          Password is required
+        </div>
+      </mat-form-field>
+    </div>
+  </form>
+
+
+  <div fxLayout="row" fxLayoutAlign="start center">
+
+    <button mat-raised-button fxFlex [disabled]="!contactForm.form.valid" type="submit"
+            color="accent">
+      <div fxFlex="30px" fxLayout="row">
+        <mat-icon class="material-icons">vpn_key</mat-icon>
+      </div>
+      <div>
+        Log in
+      </div>
+    </button>
+
+  </div>
+
+</div>

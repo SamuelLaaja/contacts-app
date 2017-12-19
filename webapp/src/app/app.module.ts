@@ -14,37 +14,38 @@ import { ContactAddressPipe } from './contact/pipes/contact-address.pipe';
 import {ContactService} from './contact/services/contact.service';
 import {ContactHttpService} from './contact/services/contact-http.service';
 import {HttpClientModule} from '@angular/common/http';
-// import { LoginComponent } from './contact/user/login/login.component';
-// import { CanActivate } from '@angular/router';
-// import {AuthenticationGuard} from './contact/guard/authentication.guard';
+import { LoginComponent } from './user/login/login.component';
+import {AuthenticationGuard} from './guard/authentication.guard';
+import {AuthenticationService} from './user/services/authentication.service';
 
 const routes: Routes = [
 
-  // {
-  //   path: 'login',
-  //   component: LoginComponent
-  // },
+  {
+    path: 'login',
+    component: LoginComponent
+  },
   {
     path: 'contacts/:id',
-    component: ContactDetailsComponent
-    // ,
-    // canActivate: [AuthenticationGuard]
+    component: ContactDetailsComponent,
+    canActivate: [AuthenticationGuard]
   },
   {
     path: 'contacts',
-    component: ContactListComponent
+    component: ContactListComponent,
+    canActivate: [AuthenticationGuard]
   },
   {
     path: 'add-contact',
-    component: ContactDetailsComponent
+    component: ContactDetailsComponent,
+    canActivate: [AuthenticationGuard]
   },
   {
     path: '',
-    component: ContactListComponent
+    component: LoginComponent
   },
   {
     path: '**',
-    component: ContactListComponent
+    component: LoginComponent
   }
 ];
 
@@ -54,8 +55,8 @@ const routes: Routes = [
     ContactListComponent,
     ContactListItemComponent,
     ContactDetailsComponent,
-    ContactAddressPipe
-    // , LoginComponent
+    ContactAddressPipe,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -69,8 +70,9 @@ const routes: Routes = [
   ],
   providers: [
     ContactService,
-    ContactHttpService
-    // , AuthenticationGuard
+    ContactHttpService,
+    AuthenticationService,
+    AuthenticationGuard
   ],
   bootstrap: [AppComponent]
 })
