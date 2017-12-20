@@ -27,7 +27,8 @@ namespace ContactsWebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.Configure<AzureSettings>(Configuration.GetSection("AzureSettings")); // hakee configit AzureSettings olioon.
-            
+
+            services.AddScoped<IAuthenticationService, AuthenticationService>();
             services.AddScoped<IContactService, ContactService>();
             services.AddScoped<IContactRepository, ContactRepository>();
 

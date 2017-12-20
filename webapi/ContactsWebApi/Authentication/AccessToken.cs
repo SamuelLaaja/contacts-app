@@ -18,10 +18,10 @@ namespace ContactsWebApi.Authentication
         public string ExtExpiresIn { get; set; }
 
         [JsonProperty("expires_on")]
-        public DateTime ExpiresOn { get; set; }
+        public string ExpiresOn { get; set; }
 
         [JsonProperty("not_before")]
-        public DateTime NotBefore { get; set; }
+        public string NotBefore { get; set; }
 
         [JsonProperty("resource")]
         public string Resource { get; set; }
