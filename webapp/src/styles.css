@@ -8,7 +8,7 @@
   src: url('../src/assets/material-icons.woff2');
 }
 
-html, body, ca-root {
+html, body, ca-root, ca-app-layout, ca-login {
   display: flex;
   flex-direction: column;
   font-family: "Palatino Linotype";
@@ -24,6 +24,11 @@ html, body, ca-root {
   padding: 0;
   background-color: rgb(213, 208, 255);
 }
+
+.ca-login {
+  background-color: rgb(213, 208, 255);
+}
+
 
 .material-icons {
   font-family: 'Material Icons';

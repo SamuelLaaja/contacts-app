@@ -14,14 +14,12 @@ namespace ContactsWebApi
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration, IOptions<AzureSettings> azureSettings)
+        public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
-            _azureSettings = azureSettings.Value;
         }
 
         public IConfiguration Configuration { get; }
-        private readonly AzureSettings _azureSettings;
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -44,8 +42,8 @@ namespace ContactsWebApi
                 }
             ).AddJwtBearer(options =>
                 {
-                    options.Audience = _azureSettings.ApplicationId;
-                    options.Authority = _azureSettings.LoginUrl + _azureSettings.DirectoryId;
+                    options.Audience = Configuration["AzureSettings:ApplicationId"];
+                    options.Authority = Configuration["AzureSettings:LoginUrl"] + Configuration["AzureSettings:DirectoryId"];
                 }
             );
 

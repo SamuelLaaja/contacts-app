@@ -25,7 +25,7 @@ export class ContactListComponent implements OnInit {
   // Goes to /contacts/0 if no input is given.
   goToContactDetailsForm(contact?: Contact) {
     const id = contact ? contact.id : 0;
-    this.router.navigate(['/contacts/' + id]);
+    this.router.navigate(['/ca/contacts/' + id]);
   }
 
   onDeleteContact(contact: Contact) {

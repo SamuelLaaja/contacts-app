@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import {Router} from '@angular/router';
-import {ContactService} from './contact/services/contact.service';
 
 @Component({
   selector: 'ca-root',
@@ -9,11 +7,4 @@ import {ContactService} from './contact/services/contact.service';
 })
 export class AppComponent {
 
-  constructor (private router: Router, private service: ContactService) {
-  }
-
-  // Quick way to add placeholder users. Remove when publishing
-  defaultContacts() {
-    this.service.defaultContacts();
-  }
 }

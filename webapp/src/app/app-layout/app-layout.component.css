@@ -1,0 +1,32 @@
+.ca-sidenav {
+  font-size: 20px;
+  font-weight: bold;
+  padding: 20px;
+  display: flex;
+  height: 100%;
+  width: 20%;
+  min-width: 250px;
+  margin: 0;
+  color: whitesmoke;
+  z-index: 3;
+  overflow: hidden;
+  text-overflow: clip;
+}
+
+.ca-toolbar {
+  height: 64px;
+  width: 100%;
+  margin: 0;
+  padding: 0px 0px 0px 16px;
+  color: whitesmoke;
+  z-index: 2;
+}
+
+.intend {
+  padding-left: 16px;
+}
+
+.ca-content {
+  padding: 16px;
+  height: 100%;
+}

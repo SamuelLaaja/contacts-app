@@ -13,10 +13,12 @@ import {FormsModule} from '@angular/forms';
 import { ContactAddressPipe } from './contact/pipes/contact-address.pipe';
 import {ContactService} from './contact/services/contact.service';
 import {ContactHttpService} from './contact/services/contact-http.service';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { LoginComponent } from './user/login/login.component';
 import {AuthenticationGuard} from './guard/authentication.guard';
 import {AuthenticationService} from './user/services/authentication.service';
+import { AppLayoutComponent } from './app-layout/app-layout.component';
+import {HttpInterceptorService} from './user/services/http-interceptor.service';
 
 const routes: Routes = [
 
@@ -25,27 +27,35 @@ const routes: Routes = [
     component: LoginComponent
   },
   {
-    path: 'contacts/:id',
-    component: ContactDetailsComponent,
-    canActivate: [AuthenticationGuard]
-  },
-  {
-    path: 'contacts',
-    component: ContactListComponent,
-    canActivate: [AuthenticationGuard]
-  },
-  {
-    path: 'add-contact',
-    component: ContactDetailsComponent,
-    canActivate: [AuthenticationGuard]
-  },
-  {
     path: '',
     component: LoginComponent
   },
   {
+    path: 'ca',
+    component: AppLayoutComponent,
+    children: [
+      {
+      path: 'contacts/:id',
+      component: ContactDetailsComponent,
+      canActivate: [AuthenticationGuard]
+      },
+      {
+        path: 'contacts',
+        component: ContactListComponent,
+        canActivate: [AuthenticationGuard]
+      },
+      {
+        path: 'add-contact',
+        component: ContactDetailsComponent,
+        canActivate: [AuthenticationGuard]
+      },
+    ]
+  },
+
+  {
     path: '**',
-    component: LoginComponent
+    component: ContactListComponent,
+    canActivate: [AuthenticationGuard]
   }
 ];
 
@@ -56,7 +66,8 @@ const routes: Routes = [
     ContactListItemComponent,
     ContactDetailsComponent,
     ContactAddressPipe,
-    LoginComponent
+    LoginComponent,
+    AppLayoutComponent
   ],
   imports: [
     BrowserModule,
@@ -72,7 +83,12 @@ const routes: Routes = [
     ContactService,
     ContactHttpService,
     AuthenticationService,
-    AuthenticationGuard
+    AuthenticationGuard,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpInterceptorService,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

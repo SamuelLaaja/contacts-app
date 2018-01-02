@@ -46,16 +46,16 @@ export class ContactDetailsComponent implements OnInit {
 
   newContact(contact: Contact) {
     this.contactService.newContact(contact);
-    this.router.navigate(['/contacts']);
+    this.router.navigate(['/ca/contacts']);
   }
 
   editContact(contact: Contact) {
     this.contactService.editContact(contact);
-    this.router.navigate(['/contacts']);
+    this.router.navigate(['/ca/contacts']);
   }
 
   goToContactList() {
-    this.router.navigate(['/contacts']);
+    this.router.navigate(['/ca/contacts']);
   }
 
   getMapUrl(): SafeResourceUrl {
