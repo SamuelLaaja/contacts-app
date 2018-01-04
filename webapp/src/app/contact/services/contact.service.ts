@@ -112,16 +112,17 @@ export class ContactService {
   }
 
   deleteContact(id: number) {
+    // cache delete first to prevent delay abuse
+    for (let i = 0, len = this.contacts.length; i < len; i++) {
+      if (this.contacts[i].id === id) {
+        this.contacts.splice(i, 1);
+        break;
+      }
+    }
     // backend delete
     this.contactHttpService.del(id).subscribe(
     // if success, cache delete
-      (response) => {
-        for (let i = 0, len = this.contacts.length; i < len; i++) {
-          if (this.contacts[i].id === id) {
-            this.contacts.splice(i, 1);
-            break;
-          }
-        }
+      () => {
       }, (err: HttpErrorResponse) => {
         if (err.error instanceof Error) {
           // A client-side or network error occurred.
