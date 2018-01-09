@@ -8,6 +8,7 @@ import {ContactService} from '../services/contact.service';
   templateUrl: './contact-list.component.html',
   styleUrls: ['./contact-list.component.css']
 })
+
 export class ContactListComponent implements OnInit {
   // used for populating contact list. *ngFor="let contact of contacts"
   contacts: Contact[];

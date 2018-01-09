@@ -4,6 +4,7 @@ import {Observable} from 'rxjs/Observable';
 import {environment} from '../../../environments/environment';
 import {Token} from '../../auth/token';
 import {Credentials} from '../../auth/credentials';
+import {ErrorMessagesService} from './error-messages.service';
 
 @Injectable()
 export class AuthenticationService {
@@ -13,7 +14,7 @@ export class AuthenticationService {
   public currentUser;
   private keyName: string;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private errors: ErrorMessagesService) {
     this.url = environment.endpointUrl + '/auth';
     this.keyName = 'ca-loggedInUser';
     // set token if saved in local storage
@@ -27,12 +28,12 @@ export class AuthenticationService {
         // Save returning token after ensuring it exists
           const responseToken = (response);
           if (responseToken) {
-            // this.token = JSON.parse(responseToken);
             localStorage.setItem(this.keyName, JSON.stringify(response));
             this.currentUser = userName;
             return true;
           }
           this.currentUser = '';
+          this.errors.showError('Username/password incorrect');
         return false;
         });
   }
@@ -52,4 +53,6 @@ export class AuthenticationService {
     return this.currentUser;
   }
 
+
 }
+

@@ -7,18 +7,22 @@ import {ContactListItemComponent} from './contact/contact-list/contact-list-item
 import {MaterialComponentsModule} from './material-components/material-components.module';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {RouterModule, Routes} from '@angular/router';
-import {MatSidenavModule, MatToolbarModule} from '@angular/material';
+import {
+  MatSidenavModule, MatSnackBar, MatSnackBarModule, MatToolbarModule,
+  MD_ELEMENTS_SELECTOR
+} from '@angular/material';
 import {ContactDetailsComponent } from './contact/contact-list/contact-details/contact-details.component';
 import {FormsModule} from '@angular/forms';
 import { ContactAddressPipe } from './contact/pipes/contact-address.pipe';
 import {ContactService} from './contact/services/contact.service';
 import {ContactHttpService} from './contact/services/contact-http.service';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
-import { LoginComponent } from './user/login/login.component';
+import {LoginComponent} from './user/login/login.component';
 import {AuthenticationGuard} from './guard/authentication.guard';
 import {AuthenticationService} from './user/services/authentication.service';
 import { AppLayoutComponent } from './app-layout/app-layout.component';
 import {HttpInterceptorService} from './user/services/http-interceptor.service';
+import {ErrorMessagesService} from './user/services/error-messages.service';
 
 const routes: Routes = [
 
@@ -77,6 +81,7 @@ const routes: Routes = [
     MatToolbarModule,
     FormsModule,
     HttpClientModule,
+    MatSnackBarModule,
     RouterModule.forRoot(routes)
   ],
   providers: [
@@ -84,6 +89,7 @@ const routes: Routes = [
     ContactHttpService,
     AuthenticationService,
     AuthenticationGuard,
+    ErrorMessagesService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: HttpInterceptorService,

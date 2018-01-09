@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {ContactService} from '../contact/services/contact.service';
 import {AuthenticationService} from '../user/services/authentication.service';
+import {ErrorMessagesService} from '../user/services/error-messages.service';
 
 @Component({
   selector: 'ca-app-layout',
@@ -12,7 +13,7 @@ export class AppLayoutComponent implements OnInit {
 
   username: string;
 
-  constructor (private router: Router, private service: ContactService, private auth: AuthenticationService) {
+  constructor (private router: Router, private service: ContactService, private auth: AuthenticationService, private errors: ErrorMessagesService) {
   }
 
   ngOnInit() {
@@ -26,5 +27,6 @@ export class AppLayoutComponent implements OnInit {
 
   logOut() {
     this.router.navigate(['/login']);
+    this.errors.showError('Logged out.');
   }
 }

@@ -5,7 +5,7 @@
     <div fxLayout="row" fxLayoutAlign="start center">
       <mat-icon color="warn" class="material-icons">account_circle</mat-icon>
       <mat-form-field>
-        <input matInput placeholder="First Name" type="email" required [(ngModel)]="userName" name="userName"
+        <input matInput placeholder="User name (email)" type="email" required [(ngModel)]="userName" name="userName"
                id="userName" #ngUserName="ngModel">
         <div [hidden]="ngUserName.valid || ngUserName.pristine"
              class="alert alert-danger">
